@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <title></title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+       
+        <p class="a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In many applications the definition of the data matrices is not obvious. For example, in<br>
+            text-mining applications, the character sequences of information items are not directly of<br>
+            interest, but a complex coding of their meaning must be done, taking into account the (natural)<br>
+            language used and the purpose of the application.</p><br>
+    
+      <p style="font-size: 16px;"><b>Multivariate Data Models</b></p>
+       <p class="b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a data matrix, the first question that arises concerns the relationships between<br>
+        its variables (columns). Could some pairs of variables be considered independent, or do the<br>
+        data indicate that there is a connection between them — either directly causal, mediated<br>
+        through another variable, or introduced through sampling bias? These questions are<br>
+        analyzed using graphical models, directed or decomposable (Madigan & Raftery, 1994). As<br>
+        an example, in Figure 1, <i>M1</i> indicates a model where <i>A</i> and <i>B</i> are dependent, whereas they<br>
+        are independent in model <i>M2</i>. In Figure 2, we describe a directed graphical model <i>M4''</i><br>
+        indicating that variables <i>A</i> and <i>B</i> are independently determined, but the value of C will be<br>
+        dependent on the values for <i>A</i> and <i>B</i>. The similar decomposable model <i>M4</i> indicates that the<br>
+        dependence of <i>A</i> and <i>B</i> is completely explained by the mediation of variable <i>C.</i></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bayesian analysis of graphical models involves selecting all or some graphs on the<br>
+        variables, dependent on prior information, and comparing their posterior probabilities with<br>
+        respect to the data matrix. A set of highest posterior probability models usually gives many<br>
+        clues to the data dependencies, although one must — as always in statistics — constantly<br>
+        remember that dependencies are not necessarily causalities.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A second question that arises concerns the relationships between rows (cases) in the<br>
+        data matrix. Are the cases built up from distinguishable classes, so that each class has its data<br>
+        generated from a simpler graphical model than that of the whole data set? In the simplest case,</p><br>
+   <p><i>Figure 1: Graphical models, dependence or independence?</i></p>
+    <img src="C:\Users\my pc\OneDrive\Desktop\html/pic.jpg">
+    <p style="font-size: 12px;">Copyright © 2003, Idea Group Inc. Copying or distributing in print or electronic forms without written<br>
+        permission of Idea Group Inc. is prohibited.</p><hr><hr>
+    
+    <p ><i>Figure 2: Graphical models, conditional independence?</i></p>
+      <img src="C:\Users\my pc\OneDrive\Desktop\html/pic2.jpg">
+    <p>these classes can be directly read off in the graphical model. In a data matrix where intervariable<br>
+        dependencies are well explained by the model <i>M4</i>, if C is a categorical variable taking only<br>
+        few values, splitting the rows by the value of <i>C</i> could give a set of data matrices in each of<br>
+        which <i>A</i> and <i>B</i> are independent. However, the interesting cases are those in which the classes<br>
+        cannot be directly seen in a graphical model. If the data matrix of the example contained only<br>
+        variables <i>A</i> and <i>B</i>, because C was unavailable or unknown to interfere with <i>A</i> and <i>B</i>, the highest<br>
+        posterior probability graphical model is one with a link from <i>A</i> to <i>B</i>. The classes would still<br>
+        be there, but since <i>C</i> would be latent or hidden, the classes would have to be derived from<br>
+        only the <i></i>A and B variables. A different case of classification is one in which the values of<br>
+        one numerical variable are drawn from several normal distributions with different means and<br>
+        variances. The full column would fit very badly to any single normal distribution, but after<br>
+        classification, each class could have a set of values fitting well to a class-specific normal<br>
+        distribution. The problem of identifying classes is known as <i>unsupervised classification</i>. A<br>
+        comprehensive system for classification based on Bayesian methodology is described in<br>
+        Cheeseman and Stutz (1995). A third question —often the one of highest practical concern<br>
+        — is whether some designated variable can be reliably predicted in the sense that it is well<br>
+        related to combinations of values of other variables, not only in the data matrix, but also with</p><hr><hr>
+  
+
+   
+    <p >high confidence in new cases that are presented. Consider a data matrix well described by<br>
+        model <i>M4</i> in Figure 2. It is conceivable that the value of <i>C</i> is a good predictor of variable <i>B</i>,<br>
+        and better than <i>A</i>. It also seems likely that knowing both <i>A</i> and <i>C</i> is of little help compared<br>
+        to knowing only <i>C</i>, because the influence of <i>A</i> on <i>B</i> is completely mediated by <i>C</i>. On the other<br>
+        hand, if we want to predict <i>C</i>, it is very conceivable that knowing both <i>A</i> and <i>B</i> is better than<br>
+        knowing only one of them.</p><br>
+    <p style="font-size: 16px;"><b>Bayesian Analysis and Over-Fitting</b></p>
+       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A natural procedure for estimating dependencies among categorical variables is by<br>
+        means of conditional probabilities estimated as frequencies in the data matrix. Such proce-<br>dures usually lead to selection of more detailed models and give poor generalizing perfor-<br>mance, in the sense that new sets of data are likely to have completely different dependencies.<br>
+        Various penalty terms have been tried to avoid over-fitting. However, the Bayesian method<br>
+        has a built-in mechanism that favors the simplest models compatible with the data, and also<br>
+        selects more detailed models as the amount of data increases. This effect appears, e.g., in the<br>
+        coin tossing example, where few tosses cannot give a verdict that the coin is unfair. The<br>
+        procedure is to compare posterior model probabilities, where the posterior probability of a<br>
+        model is obtained by combining its prior distribution of parameters with the probability of<br>
+        the data as a function of the parameters, using Bayes’ rule. Thus, if <i>p(Θ )</i> is the prior pdf of<br>
+        the parameter (set) Θ of model <i>M</i>, and the probability of obtaining the case (row of data matrix)<br>
+        d is <i>p(d|M, Θ </i>), then the probability in model <i>M</i> of the data matrix <i>D</i> containing the ordered<br>
+        cases d<sub>i</sub> is:</p>
+        <img style="padding-left: 3%;" src="C:\Users\my pc\OneDrive\Desktop\html/pic3.jpg">
+      <p>and the posterior probability of model <i>M</i> given the data <i>D</i> is, by Bayes’ rule:</p>
+      <img style="padding-left: 2%;" src="C:\Users\my pc\OneDrive\Desktop\html/pic4.jpg">
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two models <i>M1</i> and <i>M2</i> can now be related with respect to the data by the Bayes factor<br>
+        <i>p(D| M1)/p(D|M2)</i> used to go from the prior to the posterior odds. With the Bayesian method,<br>
+        there is no need to penalize more detailed models to avoid over-fitting — if <i>M2</i> is more detailed<br>
+        than <i>M1</i> in the sense of having more parameters to fit, then the parameter dimension is larger<br>
+        in <i>M2</i>, and <i>p(Θ1)</i> is larger than <i>p(Θ2)</i>, which automatically penalizes <i>M2</i> against <i>M1</i> when<br>
+        the parameters are integrated out. This automatic penalization has been found appropriate<br>
+        in most application cases, and should be complemented by explicit prior model probabilities<br>
+        only when there is concrete prior information that justifies it or when the data is too abundant<br>
+        to select a model simple enough to comprehend. When the more detailed model is the true<br>
+        one, Bayes factor in favor of it will increase exponentially with sample size, but in the other<br>
+        case the Bayes factor in favor of the less detailed model will only increase polynomially.</p><br><br>
+    
+
+<p style="font-size: 16px; padding-left: 9%; "><b>LOCAL GRAPHICAL MODEL CHOICE</b></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will analyze a number of models involving two or three variables of categorical type,<br>
+    as a preparation to the task of determining likely decomposable or directed graphical models.<br>
+    First, consider the case of two variables, <i>A</i> and <i>B</i>, and our task is to determine whether or not<br>
+    these variables are dependent. We must define one model <i>M2</i> that captures the concept of<br>
+    independence, and one model <i>M1</i> that captures the concept of dependence, and ask which<br>
+    one produced our data. The Bayes factor is <i>p(D|M2)/p(D|M1)</i> in favor of independence, and<br>
+    it will be multiplied with the prior odds (which, lacking prior information in this general setting,<br>
+    we assume is one) to get the posterior odds. There is some latitude in defining the data model<br>
+    for dependence and independence, but it leads us to quite similar computations, as we shall<br>
+    see.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let <i>d<sub>A</sub></i> and <i>d<sub>B</sub></i> be the number of possible values for <i>A</i> and <i>B</i>, respectively. It is natural<br>
+        to regard categorical data as produced by a discrete probability distribution, and then it is<br>
+        convenient to assume Dirichlet distributions for the parameters (probabilities of the possible<br>
+        outcomes) of the distribution. We will find that this analysis is the key step in determining<br>
+        a full graphical model for the data matrix. For a discrete distribution over <i>d</i> values, the<br>
+        parameter set is a sequence of probabilities x = (x<sub>1</sub>,...,x<sub>d</sub>) constrained by 0≤ x<sub>i</sub> and ∑x<sub>i</sub> =1<br>
+        (often the last parameter x<sub>d</sub>
+         is omitted — it is determined by the first <i>d-1</i> ones). A prior<br>
+        distribution over x is the conjugate Dirichlet distribution with a sequence of non-negative<br>
+        parameters α = (α<sub>1</sub>,..., α<sub>d</sub>). Then the Dirichlet distribution is Di(x |α )= Γ(∑α<sub>i</sub>)/∏Γ(α<sub>i</sub>)× ∏ x<sub>i</sub>
+        <sup>(αi −1)</sup> ,<br>
+        where <i>Γ(n+1)=n!</i> for natural number <i><n></i>. The normalizing constant gives a useful mnemonic</p>
+  <p>for integrating ∏x<sub>i</sub>
+    <sup>(α i−1)</sup>  over the <i>d-1</i>-dimensional unit cube (with x<sub>d</sub> =1−∑<sub>1</sub><sup>d−1</sup> x<sub>i</sub> 
+    
+    ). It is very</p>
+    <p>convenient to use Dirichlet priors, for the posterior is also a Dirichlet distribution. After<br>
+        having obtained data with frequency count n we just add it to the prior parameter vector to<br>
+        get the posterior parameter vector <i>α + n</i> . It is also easy to handle priors that are mixtures<br>
+        of Dirichlets, because the mixing propagates through and we only need to mix the posteriors<br>
+        of the components to get the posterior of the mixture.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With no specific prior information for <i>x</i>, it is necessary from symmetry considerations<br>
+        to assume all Dirichlet parameters equal to some value <i>α</i>. A convenient prior is the uniform</p>
+    <p>prior <i>( α=1)</i>. This is, e.g., the prior used by Bayes and Laplace to derive the rule of succession<br>
+        (see Chapter 18 of Jaynes 2003). Other priors have been used, but experiments have shown<br>
+        little difference between these choices. In many cases, an expert’s delivered prior information<br>
+        can be expressed as an equivalent sample that is just added to the data matrix, and then this<br>
+        modified matrix can be analyzed with the uniform prior. Likewise, a number of experts can be<br>
+        mixed to form a mixture prior. If the data has occurrence vector n<i>i</i> for the d possible data values<br>
+        in a case, and n= n<sub>+</sub> =∑<sub>i</sub>
+        n<sub>i</sub>
+         , then the probability for these data given the discrete distribution<br>
+        parameters x, is</p>
+        <img src="C:\Users\my pc\OneDrive\Desktop\html/pic5.jpg"><br><hr>
+        
+
+
+
+<p>Integrating out the x<i>i</i> with the uniform prior gives the probability of the data given model<br>
+    <i>M</i> (<i>M</i> is characterized by a probability distribution and a Dirichlet prior on its parameters):</p>
+
+    <img src="C:\Users\my pc\OneDrive\Desktop\html/pic6.jpg">
+    <p>Thus, the probability for each sample size is independent of the actual data with the uniform<br>
+        Dirichlet prior. Consider now the data matrix over <i>A</i> and <i>B</i>. Let n<sub>ij</sub>
+         be the number of rows with<br>
+        value <i>i</i> for <i>A</i> and value <i>j</i> for <i>B</i>. Let n<sub>+ j</sub> and n<sub>i+</sub> be the marginal counts where we have summed<br>
+        over the ‘dotted’ index, and <i>n= <sub>n++</sub></i> . Let model <i>M1</i> (figure 1) be the model where the <i>A</i> and<br>
+        <i>B</i> value for a row is combined to a categorical variable ranging over <i>d<sub>A</sub> d<sub>B</sub></i> different values.<br>
+        The probability of the data given <i>M1</i> is obtained by replacing the products and replacing d<br>
+        by <i>d<sub>A</sub> d<sub>B</sub></i> in equation (3):</p>
+<img src="C:\Users\my pc\OneDrive\Desktop\html/pic7.jpg">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We could also consider a different model <i>M1’</i>, where the <i>A</i> column is generated first<br>
+    and then the <i>B</i> column is generated for each value of <i>A</i> in turn. With uniform priors we get:</p>
+    <img src="C:\Users\my pc\OneDrive\Desktop\html/pic8.jpg">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Observe that we are not allowed to decide between the undirected M1 and the directed<br>
+    model <i>M1’</i> based on Equations (4) and (5). This is because these models define the same set<br>
+    of pdfs involving <i>A</i> and <i>B</i>. In the next model <i>M2</i>, we assume that the <i>A</i> and <i>B</i> columns are<br>
+    independent, each having its own discrete distribution. There are two different ways to<br>
+    specify prior information in this case. We can either consider the two columns separately,<br>
+    each being assumed to be generated by a discrete distribution with its own prior. Or we could<br>
+    follow the style of <i>M1’</i> above, with the difference that each A value has the same distribution<br></p>
+<p>of <i>B</i> values. Now the first approach: assuming parameters x <sup>-A</sup> and x <sup>-B</sup> for the two</p>
+<p>distributions, a row with values <i>i</i> for <i>A</i> and <i>j</i> for <i>B</i> will have probability x<sub>i</sub><sup>A</sup>x<sub>j</sub><sup>B</sup>. For discrete</p>
+<p>distribution parameters x <sup>-A</sup> x <sup>-B</sup> , the probability of the data matrix <i>n</i> will be:</p><br>
+
+ 
+        </body>
+
+<style>
+    body{
+    padding-left: 30%;
+}
+.le{
+    padding-left: 35%;
+}
+</style>
